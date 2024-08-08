@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document(collection = "tb_triagens")
-public class Triagem {
+public class TriagemEntity {
     @MongoId
     private Long triagemId;
 
@@ -14,9 +14,9 @@ public class Triagem {
 
     private int qtdPacientesEsperando;
 
-    private Paciente paciente;
+    private PacienteEntity pacienteEntity;
 
-    public Triagem() {}
+    public TriagemEntity() {}
 
     public Long getTriagemId() {
         return triagemId;
@@ -42,12 +42,12 @@ public class Triagem {
         this.qtdPacientesEsperando = qtdPacientesEsperando;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public PacienteEntity getPaciente() {
+        return pacienteEntity;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setPaciente(PacienteEntity pacienteEntity) {
+        this.pacienteEntity = pacienteEntity;
     }
 
     @Override
@@ -55,6 +55,6 @@ public class Triagem {
         return  "triagemId=" + triagemId +
                 ", atendido=" + atendido +
                 ", qtdPacientesEsperando=" + qtdPacientesEsperando +
-                ", paciente=" + paciente;
+                ", paciente=" + pacienteEntity;
     }
 }

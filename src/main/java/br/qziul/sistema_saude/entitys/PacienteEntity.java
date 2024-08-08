@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document(collection = "tb_pacientes")
-public class Paciente {
+public class PacienteEntity {
     @MongoId
     private Long pacienteId;
 
@@ -17,7 +17,7 @@ public class Paciente {
     private String telefone;
     private String cep;
 
-    public Paciente() {}
+    public PacienteEntity() {}
 
     public Long getPacienteId() {
         return pacienteId;
