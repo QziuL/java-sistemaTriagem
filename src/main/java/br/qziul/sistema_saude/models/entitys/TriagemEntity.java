@@ -1,5 +1,6 @@
-package br.qziul.sistema_saude.entitys;
+package br.qziul.sistema_saude.models.entitys;
 
+import br.qziul.sistema_saude.models.Paciente;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -12,9 +13,9 @@ public class TriagemEntity {
     @Indexed(name = "atendidos_index")
     private boolean atendido;
 
-    private int qtdPacientesEsperando;
+    //private int qtdPacientesEsperando;
 
-    private PacienteEntity pacienteEntity;
+    private Paciente paciente;
 
     public TriagemEntity() {}
 
@@ -34,27 +35,27 @@ public class TriagemEntity {
         this.atendido = atendido;
     }
 
-    public int getQtdPacientesEsperando() {
-        return qtdPacientesEsperando;
+//    public int getQtdPacientesEsperando() {
+//        return qtdPacientesEsperando;
+//    }
+
+//    public void setQtdPacientesEsperando(int qtdPacientesEsperando) {
+//        this.qtdPacientesEsperando = qtdPacientesEsperando;
+//    }
+
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setQtdPacientesEsperando(int qtdPacientesEsperando) {
-        this.qtdPacientesEsperando = qtdPacientesEsperando;
-    }
-
-    public PacienteEntity getPaciente() {
-        return pacienteEntity;
-    }
-
-    public void setPaciente(PacienteEntity pacienteEntity) {
-        this.pacienteEntity = pacienteEntity;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     @Override
     public String toString() {
         return  "triagemId=" + triagemId +
                 ", atendido=" + atendido +
-                ", qtdPacientesEsperando=" + qtdPacientesEsperando +
-                ", paciente=" + pacienteEntity;
+                //", qtdPacientesEsperando=" + qtdPacientesEsperando +
+                ", paciente=" + paciente;
     }
 }
