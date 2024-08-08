@@ -1,23 +1,23 @@
-package br.qziul.sistema_saude.entitys;
+package br.qziul.sistema_saude.models;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-
-@Document(collection = "tb_pacientes")
-public class PacienteEntity {
-    @MongoId
+public class Paciente {
     private Long pacienteId;
-
     private String nome;
     private String nascimento;
-
-    @Indexed(name = "cpf_index")
     private String cpf;
     private String telefone;
     private String cep;
 
-    public PacienteEntity() {}
+    public Paciente() {}
+
+    public Paciente(Long pacienteId, String nome, String nascimento, String cpf, String telefone, String cep) {
+        this.pacienteId = pacienteId;
+        this.nome = nome;
+        this.nascimento = nascimento;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.cep = cep;
+    }
 
     public Long getPacienteId() {
         return pacienteId;
