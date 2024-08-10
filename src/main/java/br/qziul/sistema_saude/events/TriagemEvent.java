@@ -1,4 +1,4 @@
-package br.qziul.sistema_saude.dtos;
+package br.qziul.sistema_saude.events;
 
 import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
@@ -6,9 +6,9 @@ import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 /**
  *  Verificar como alterar DTO para não receber os IDs.
  */
-public record TriagemEventDTO(
+public record TriagemEvent(
         Long codigoTriagem,
-        PacienteEventDTO paciente,
+        PacienteEvent paciente,
         boolean atendido
 ) {
     public TriagemEntity toEntity() {
@@ -19,13 +19,13 @@ public record TriagemEventDTO(
         return triagemEntity;
     }
 
-    private static Paciente setPaciente(TriagemEventDTO triagemEventDTO) {
+    private static Paciente setPaciente(TriagemEvent triagemEvent) {
         return new Paciente(
-                triagemEventDTO.paciente().codigoPaciente(),
-                triagemEventDTO.paciente().nome(),
-                triagemEventDTO.paciente().nascimento(),
-                triagemEventDTO.paciente().cpf(),
-                triagemEventDTO.paciente().telefone(),
-                triagemEventDTO.paciente().cep());
+                triagemEvent.paciente().codigoPaciente(),
+                triagemEvent.paciente().nome(),
+                triagemEvent.paciente().nascimento(),
+                triagemEvent.paciente().cpf(),
+                triagemEvent.paciente().telefone(),
+                triagemEvent.paciente().cep());
     }
 }
