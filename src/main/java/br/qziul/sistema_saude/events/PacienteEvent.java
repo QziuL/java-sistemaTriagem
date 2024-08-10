@@ -1,6 +1,6 @@
-package br.qziul.sistema_saude.dtos;
+package br.qziul.sistema_saude.events;
 
-public record PacienteEventDTO(
+public record PacienteEvent(
         Long codigoPaciente,
         String nome,
         String nascimento,

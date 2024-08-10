@@ -1,6 +1,6 @@
 package br.qziul.sistema_saude.listener;
 
-import br.qziul.sistema_saude.dtos.TriagemEventDTO;
+import br.qziul.sistema_saude.events.TriagemEvent;
 import br.qziul.sistema_saude.service.TriagemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ public class OrderCreatedListener {
     private TriagemService triagemService;
 
     @RabbitListener(queues = TRIAGEM_QUEUE)
-    public void listen(Message<TriagemEventDTO> message) {
+    public void listen(Message<TriagemEvent> message) {
         logger.info("Message consumed: {}", message);
         triagemService.save(message.getPayload());
     }
