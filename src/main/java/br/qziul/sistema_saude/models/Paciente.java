@@ -1,7 +1,7 @@
 package br.qziul.sistema_saude.models;
 
 public class Paciente {
-    private Long pacienteId;
+//    private Long pacienteId;
     private String nome;
     private String nascimento;
     private String cpf;
@@ -10,21 +10,12 @@ public class Paciente {
 
     public Paciente() {}
 
-    public Paciente(Long pacienteId, String nome, String nascimento, String cpf, String telefone, String cep) {
-        this.pacienteId = pacienteId;
+    public Paciente(String nome, String nascimento, String cpf, String telefone, String cep) {
         this.nome = nome;
         this.nascimento = nascimento;
         this.cpf = cpf;
         this.telefone = telefone;
         this.cep = cep;
-    }
-
-    public Long getPacienteId() {
-        return pacienteId;
-    }
-
-    public void setPacienteId(Long pacienteId) {
-        this.pacienteId = pacienteId;
     }
 
     public String getNome() {
@@ -69,8 +60,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "pacienteId=" + pacienteId +
-                ", nome='" + nome + '\'' +
+        return  ", nome='" + nome + '\'' +
                 ", nascimento='" + nascimento + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", telefone='" + telefone + '\'' +
