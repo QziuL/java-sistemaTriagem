@@ -13,8 +13,6 @@ public class TriagemEntity {
     @Indexed(name = "atendidos_index")
     private boolean atendido;
 
-    //private int qtdPacientesEsperando;
-
     private Paciente paciente;
 
     public TriagemEntity() {}
@@ -34,14 +32,6 @@ public class TriagemEntity {
     public void setAtendido(boolean atendido) {
         this.atendido = atendido;
     }
-
-//    public int getQtdPacientesEsperando() {
-//        return qtdPacientesEsperando;
-//    }
-
-//    public void setQtdPacientesEsperando(int qtdPacientesEsperando) {
-//        this.qtdPacientesEsperando = qtdPacientesEsperando;
-//    }
 
     public Paciente getPaciente() {
         return paciente;
