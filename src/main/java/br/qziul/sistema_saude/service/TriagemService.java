@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class TriagemService {
@@ -18,23 +19,31 @@ public class TriagemService {
         triagemRepository.save(triagemEvent.toEntity());
     }
 
+    public void update(TriagemEntity triagemEntity) {
+        triagemRepository.save(triagemEntity);
+    }
+
     public List<TriagemResponse> getAll() {
         List<TriagemEntity> allEntities = triagemRepository.findAll();
         return allEntities.stream().map(TriagemResponse::toResponse).toList();
     }
 
-    public TriagemResponse findById(Long id) {
-        TriagemEntity triagemEntity = findEntityById(id);
-        return TriagemResponse.toResponse(triagemEntity);
+    public TriagemResponse findByIdAndReturnResponse(Long id) {
+        TriagemEntity triagemEntity = triagemRepository.findById(id).orElse(null);
+        return (Objects.isNull(triagemEntity))
+                ? null
+                : TriagemResponse.toResponse(triagemEntity);
+    }
+
+    public TriagemEntity findByIdAndReturnEntity(Long id) {
+        return triagemRepository.findById(id).orElse(null);
     }
 
     public TriagemResponse deleteById(Long id) {
-        TriagemEntity triagemEntity = findEntityById(id);
+        TriagemEntity triagemEntity = findByIdAndReturnEntity(id);
+        if(Objects.isNull(triagemEntity))
+            return null;
         triagemRepository.deleteById(triagemEntity.getTriagemId());
         return TriagemResponse.toResponse(triagemEntity);
-    }
-
-    private TriagemEntity findEntityById(Long id) {
-        return triagemRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 }
