@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import static br.qziul.sistema_saude.config.RabbitMqConfig.TRIAGEM_QUEUE;
 
 @Component
-public class OrderCreatedListener {
-    private final Logger logger = LoggerFactory.getLogger(OrderCreatedListener.class);
+public class TriagemCreatedListener {
+    private final Logger logger = LoggerFactory.getLogger(TriagemCreatedListener.class);
 
     @Autowired
     private TriagemService triagemService;
