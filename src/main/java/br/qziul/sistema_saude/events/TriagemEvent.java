@@ -3,9 +3,6 @@ package br.qziul.sistema_saude.events;
 import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 
-/**
- *  Verificar como alterar DTO para não receber os IDs.
- */
 public record TriagemEvent(
         Long codigoTriagem,
         PacienteEvent paciente,
@@ -21,7 +18,6 @@ public record TriagemEvent(
 
     private static Paciente setPaciente(TriagemEvent triagemEvent) {
         return new Paciente(
-                triagemEvent.paciente().codigoPaciente(),
                 triagemEvent.paciente().nome(),
                 triagemEvent.paciente().nascimento(),
                 triagemEvent.paciente().cpf(),
