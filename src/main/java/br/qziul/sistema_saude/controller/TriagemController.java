@@ -1,5 +1,6 @@
 package br.qziul.sistema_saude.controller;
 
+import br.qziul.sistema_saude.controller.dtos.TriagemTotalResponse;
 import br.qziul.sistema_saude.controller.dtos.TriagemResponse;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 import br.qziul.sistema_saude.service.TriagemService;
@@ -17,8 +18,17 @@ public class TriagemController {
     private TriagemService triagemService;
 
     @GetMapping("/triagem")
-    public ResponseEntity<List<TriagemResponse>> getAll() {
-        return ResponseEntity.ok(triagemService.getAll());
+    public ResponseEntity<TriagemTotalResponse> getAll() {
+        List<TriagemResponse> triagemResponses = triagemService.getAll();
+        int naoAtendidos = 0;
+        int total = triagemResponses.size();
+
+        for(TriagemResponse t : triagemResponses) {
+            if(!t.atendido()) naoAtendidos++;
+        }
+
+        TriagemTotalResponse response = new TriagemTotalResponse(total, naoAtendidos, triagemResponses);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/triagem/{triagemId}")
