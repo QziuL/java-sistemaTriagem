@@ -4,15 +4,12 @@ import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 
 public record TriagemResponse(
         Long triagemId,
-        Long pacienteId,
         String pacienteNome,
-        boolean atendido
-) {
+        boolean atendido) {
     public static TriagemResponse toResponse(TriagemEntity triagemEntity) {
         return new TriagemResponse(
                 triagemEntity.getTriagemId(),
-                triagemEntity.getPaciente().getPacienteId(),
                 triagemEntity.getPaciente().getNome(),
-                triagemEntity.isAtendido());
+                triagemEntity.atendido());
     }
 }
