@@ -10,6 +10,6 @@ public record TriagemResponse(
         return new TriagemResponse(
                 triagemEntity.getTriagemId(),
                 triagemEntity.getPaciente().getNome(),
-                triagemEntity.isAtendido());
+                triagemEntity.atendido());
     }
 }
