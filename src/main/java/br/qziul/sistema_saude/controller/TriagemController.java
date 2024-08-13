@@ -50,17 +50,23 @@ public class TriagemController {
     @PutMapping("/triagem/{triagemId}")
     public ResponseEntity<Object> updateById(
             @PathVariable("triagemId") Long triagemId,
-            @RequestBody TriagemEntity triagemEntity
+            @RequestBody TriagemResponse requestBody
     ) {
-        TriagemEntity entity = triagemService.findByIdAndReturnEntity(triagemId);
-        if(Objects.isNull(entity))
+        TriagemEntity triagemEntity = triagemService.findByIdAndReturnEntity(requestBody.triagemId());
+        if(Objects.isNull(triagemEntity))
             return ResponseEntity.notFound().build();
 
-        BeanUtils.copyProperties(triagemEntity, entity);
-        System.out.println(triagemEntity.getPaciente());
-//        entity.setPaciente(triagemEntity.getPaciente());
-        triagemService.update(entity);
+//      triagemEntity.setTriagemId(triagemEntity.getTriagemId());
+        if(!Objects.equals(triagemEntity.getPaciente().getNome(), requestBody.pacienteNome()))
+            triagemEntity.getPaciente().setNome(requestBody.pacienteNome());
+        if(!Objects.equals(triagemEntity.atendido(), requestBody.atendido()))
+            triagemEntity.setAtendido(requestBody.atendido());
 
-        return ResponseEntity.ok(TriagemResponse.toResponse(entity));
+//        BeanUtils.copyProperties(bodyEntity, entity);
+//        System.out.println(bodyEntity.getPaciente());
+//        entity.setPaciente(triagemEntity.getPaciente());
+        triagemService.update(triagemEntity);
+
+        return ResponseEntity.ok(TriagemResponse.toResponse(triagemEntity));
     }
 }
