@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.UUID;
+
 @Document(collection = "tb_triagens")
 public class TriagemEntity {
     @MongoId
@@ -25,7 +27,7 @@ public class TriagemEntity {
         this.triagemId = triagemId;
     }
 
-    public boolean isAtendido() {
+    public boolean atendido() {
         return atendido;
     }
 
