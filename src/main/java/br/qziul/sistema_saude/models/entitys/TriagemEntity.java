@@ -5,12 +5,10 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.UUID;
-
 @Document(collection = "tb_triagens")
 public class TriagemEntity {
     @MongoId
-    private Long triagemId;
+    private String triagemId;
 
     @Indexed(name = "atendidos_index")
     private boolean atendido;
@@ -19,11 +17,11 @@ public class TriagemEntity {
 
     public TriagemEntity() {}
 
-    public Long getTriagemId() {
+    public String getTriagemId() {
         return triagemId;
     }
 
-    public void setTriagemId(Long triagemId) {
+    public void setTriagemId(String triagemId) {
         this.triagemId = triagemId;
     }
 

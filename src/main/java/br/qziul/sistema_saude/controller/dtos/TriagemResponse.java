@@ -3,7 +3,7 @@ package br.qziul.sistema_saude.controller.dtos;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 
 public record TriagemResponse(
-        Long triagemId,
+        String triagemId,
         String pacienteNome,
         boolean atendido) {
     public static TriagemResponse toResponse(TriagemEntity triagemEntity) {

@@ -2,6 +2,7 @@ package br.qziul.sistema_saude.controller;
 
 import br.qziul.sistema_saude.controller.dtos.TriagemTotalResponse;
 import br.qziul.sistema_saude.controller.dtos.TriagemResponse;
+import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 import br.qziul.sistema_saude.service.TriagemService;
 import org.springframework.beans.BeanUtils;
@@ -32,7 +33,7 @@ public class TriagemController {
     }
 
     @GetMapping("/triagem/{triagemId}")
-    public ResponseEntity<TriagemResponse> getById(@PathVariable("triagemId") Long triagemId) {
+    public ResponseEntity<TriagemResponse> getById(@PathVariable("triagemId") String triagemId) {
         TriagemResponse triagemResponse = triagemService.findByIdAndReturnResponse(triagemId);
         return (Objects.isNull(triagemResponse))
                 ? ResponseEntity.notFound().build()
@@ -40,7 +41,7 @@ public class TriagemController {
     }
 
     @DeleteMapping("/triagem/{triagemId}")
-    public ResponseEntity<TriagemResponse> deleteById(@PathVariable("triagemId") Long triagemId) {
+    public ResponseEntity<TriagemResponse> deleteById(@PathVariable("triagemId") String triagemId) {
         TriagemResponse triagemResponse = triagemService.deleteById(triagemId);
         return (Objects.isNull(triagemResponse))
                 ? ResponseEntity.notFound().build()
@@ -48,25 +49,25 @@ public class TriagemController {
     }
 
     @PutMapping("/triagem/{triagemId}")
-    public ResponseEntity<Object> updateById(
-            @PathVariable("triagemId") Long triagemId,
+    public ResponseEntity<TriagemResponse> updateById(
+            @PathVariable("triagemId") String triagemId,
             @RequestBody TriagemResponse requestBody
     ) {
         TriagemEntity triagemEntity = triagemService.findByIdAndReturnEntity(requestBody.triagemId());
         if(Objects.isNull(triagemEntity))
             return ResponseEntity.notFound().build();
-
-//      triagemEntity.setTriagemId(triagemEntity.getTriagemId());
         if(!Objects.equals(triagemEntity.getPaciente().getNome(), requestBody.pacienteNome()))
             triagemEntity.getPaciente().setNome(requestBody.pacienteNome());
         if(!Objects.equals(triagemEntity.atendido(), requestBody.atendido()))
             triagemEntity.setAtendido(requestBody.atendido());
-
-//        BeanUtils.copyProperties(bodyEntity, entity);
-//        System.out.println(bodyEntity.getPaciente());
-//        entity.setPaciente(triagemEntity.getPaciente());
         triagemService.update(triagemEntity);
 
         return ResponseEntity.ok(TriagemResponse.toResponse(triagemEntity));
+    }
+
+    @GetMapping("triagem/{triagemId}/paciente")
+    public ResponseEntity<Paciente> getPacienteByTriagemId(@PathVariable("triagemId") String triagemId) {
+        Paciente paciente = triagemService.findPacienteByTriagemId(triagemId);
+        return ResponseEntity.ok(paciente);
     }
 }
