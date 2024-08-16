@@ -32,7 +32,7 @@ public class TriagemController {
     }
 
     @GetMapping("/triagem/{triagemId}")
-    public ResponseEntity<TriagemResponse> getById(@PathVariable("triagemId") Long triagemId) {
+    public ResponseEntity<TriagemResponse> getById(@PathVariable("triagemId") String triagemId) {
         TriagemResponse triagemResponse = triagemService.findByIdAndReturnResponse(triagemId);
         return (Objects.isNull(triagemResponse))
                 ? ResponseEntity.notFound().build()
@@ -40,7 +40,7 @@ public class TriagemController {
     }
 
     @DeleteMapping("/triagem/{triagemId}")
-    public ResponseEntity<TriagemResponse> deleteById(@PathVariable("triagemId") Long triagemId) {
+    public ResponseEntity<TriagemResponse> deleteById(@PathVariable("triagemId") String triagemId) {
         TriagemResponse triagemResponse = triagemService.deleteById(triagemId);
         return (Objects.isNull(triagemResponse))
                 ? ResponseEntity.notFound().build()
@@ -49,7 +49,7 @@ public class TriagemController {
 
     @PutMapping("/triagem/{triagemId}")
     public ResponseEntity<Object> updateById(
-            @PathVariable("triagemId") Long triagemId,
+            @PathVariable("triagemId") String triagemId,
             @RequestBody TriagemResponse requestBody
     ) {
         TriagemEntity triagemEntity = triagemService.findByIdAndReturnEntity(requestBody.triagemId());

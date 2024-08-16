@@ -28,22 +28,22 @@ public class TriagemService {
         return allEntities.stream().map(TriagemResponse::toResponse).toList();
     }
 
-    public TriagemResponse findByIdAndReturnResponse(Long id) {
+    public TriagemResponse findByIdAndReturnResponse(String id) {
         TriagemEntity triagemEntity = triagemRepository.findById(id).orElse(null);
         return (Objects.isNull(triagemEntity))
                 ? null
                 : TriagemResponse.toResponse(triagemEntity);
     }
 
-    public TriagemEntity findByIdAndReturnEntity(Long id) {
+    public TriagemEntity findByIdAndReturnEntity(String id) {
         return triagemRepository.findById(id).orElse(null);
     }
 
-    public TriagemResponse deleteById(Long id) {
+    public TriagemResponse deleteById(String id) {
         TriagemEntity triagemEntity = findByIdAndReturnEntity(id);
         if(Objects.isNull(triagemEntity))
             return null;
-        triagemRepository.deleteById(triagemEntity.getTriagemId());
+        triagemRepository.deleteById(id);
         return TriagemResponse.toResponse(triagemEntity);
     }
 }
