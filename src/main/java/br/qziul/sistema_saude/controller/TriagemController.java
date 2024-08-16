@@ -55,16 +55,10 @@ public class TriagemController {
         TriagemEntity triagemEntity = triagemService.findByIdAndReturnEntity(requestBody.triagemId());
         if(Objects.isNull(triagemEntity))
             return ResponseEntity.notFound().build();
-
-//      triagemEntity.setTriagemId(triagemEntity.getTriagemId());
         if(!Objects.equals(triagemEntity.getPaciente().getNome(), requestBody.pacienteNome()))
             triagemEntity.getPaciente().setNome(requestBody.pacienteNome());
         if(!Objects.equals(triagemEntity.atendido(), requestBody.atendido()))
             triagemEntity.setAtendido(requestBody.atendido());
-
-//        BeanUtils.copyProperties(bodyEntity, entity);
-//        System.out.println(bodyEntity.getPaciente());
-//        entity.setPaciente(triagemEntity.getPaciente());
         triagemService.update(triagemEntity);
 
         return ResponseEntity.ok(TriagemResponse.toResponse(triagemEntity));
