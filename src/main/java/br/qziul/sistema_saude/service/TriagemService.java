@@ -1,6 +1,6 @@
 package br.qziul.sistema_saude.service;
 
-import br.qziul.sistema_saude.controller.dtos.TriagemResponse;
+import br.qziul.sistema_saude.controller.dtos.response.TriagemResponse;
 import br.qziul.sistema_saude.events.TriagemEvent;
 import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
