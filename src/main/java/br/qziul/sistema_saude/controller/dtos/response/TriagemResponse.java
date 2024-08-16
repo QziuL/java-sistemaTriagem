@@ -1,4 +1,4 @@
-package br.qziul.sistema_saude.controller.dtos;
+package br.qziul.sistema_saude.controller.dtos.response;
 
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 
