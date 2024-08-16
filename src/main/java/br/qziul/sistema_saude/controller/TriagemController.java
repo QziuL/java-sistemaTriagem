@@ -2,6 +2,7 @@ package br.qziul.sistema_saude.controller;
 
 import br.qziul.sistema_saude.controller.dtos.TriagemTotalResponse;
 import br.qziul.sistema_saude.controller.dtos.TriagemResponse;
+import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 import br.qziul.sistema_saude.service.TriagemService;
 import org.springframework.beans.BeanUtils;
@@ -48,7 +49,7 @@ public class TriagemController {
     }
 
     @PutMapping("/triagem/{triagemId}")
-    public ResponseEntity<Object> updateById(
+    public ResponseEntity<TriagemResponse> updateById(
             @PathVariable("triagemId") String triagemId,
             @RequestBody TriagemResponse requestBody
     ) {
@@ -62,5 +63,11 @@ public class TriagemController {
         triagemService.update(triagemEntity);
 
         return ResponseEntity.ok(TriagemResponse.toResponse(triagemEntity));
+    }
+
+    @GetMapping("triagem/{triagemId}/paciente")
+    public ResponseEntity<Paciente> getPacienteByTriagemId(@PathVariable("triagemId") String triagemId) {
+        Paciente paciente = triagemService.findPacienteByTriagemId(triagemId);
+        return ResponseEntity.ok(paciente);
     }
 }

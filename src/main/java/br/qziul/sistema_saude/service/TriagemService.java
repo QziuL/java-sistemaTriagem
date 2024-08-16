@@ -2,6 +2,7 @@ package br.qziul.sistema_saude.service;
 
 import br.qziul.sistema_saude.controller.dtos.TriagemResponse;
 import br.qziul.sistema_saude.events.TriagemEvent;
+import br.qziul.sistema_saude.models.Paciente;
 import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 import br.qziul.sistema_saude.repository.TriagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,12 @@ public class TriagemService {
             return null;
         triagemRepository.deleteById(id);
         return TriagemResponse.toResponse(triagemEntity);
+    }
+
+    public Paciente findPacienteByTriagemId(String triagemId) {
+        TriagemEntity triagemEntity = triagemRepository.findById(triagemId).orElse(null);
+        if(Objects.isNull(triagemEntity) || Objects.isNull(triagemEntity.getPaciente()))
+            return null;
+        return triagemEntity.getPaciente();
     }
 }
