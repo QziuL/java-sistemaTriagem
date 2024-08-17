@@ -57,8 +57,6 @@ public class TriagemController {
         TriagemEntity triagemEntity = triagemService.findByIdAndReturnEntity(triagemId);
         if(Objects.isNull(triagemEntity))
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID ["+ triagemId +"] not found.");
-//        if(!Objects.equals(triagemEntity.getPaciente().getNome(), requestBody.pacienteNome()))
-//            triagemEntity.getPaciente().setNome(requestBody.pacienteNome());
         if(!Objects.equals(triagemEntity.atendido(), requestBody.atendido()))
             triagemEntity.setAtendido(requestBody.atendido());
         triagemService.update(triagemEntity);

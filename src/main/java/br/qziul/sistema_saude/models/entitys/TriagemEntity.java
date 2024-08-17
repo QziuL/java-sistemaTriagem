@@ -45,7 +45,6 @@ public class TriagemEntity {
     public String toString() {
         return  "triagemId=" + triagemId +
                 ", atendido=" + atendido +
-                //", qtdPacientesEsperando=" + qtdPacientesEsperando +
                 ", paciente=" + paciente;
     }
 }

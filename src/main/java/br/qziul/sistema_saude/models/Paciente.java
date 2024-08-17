@@ -1,7 +1,6 @@
 package br.qziul.sistema_saude.models;
 
 public class Paciente {
-//    private Long pacienteId;
     private String nome;
     private String nascimento;
     private String cpf;
