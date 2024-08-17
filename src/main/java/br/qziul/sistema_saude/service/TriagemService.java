@@ -16,8 +16,8 @@ public class TriagemService {
     @Autowired
     private TriagemRepository triagemRepository;
 
-    public void save(TriagemEvent triagemEvent) {
-        triagemRepository.save(triagemEvent.toEntity());
+    public void save(TriagemEntity triagemEntity) {
+        triagemRepository.save(triagemEntity);
     }
 
     public void update(TriagemEntity triagemEntity) {
