@@ -2,13 +2,16 @@
 
 ### Tecnologias usadas:
 - Java 21 com Spring Boot
-- MongoDB
-- RabbitMQ
+- Spring Web, Data MongoDB e RabbitMQ
+- Docker para serviços do MongoDB e RabbitMQ
 
 Utilizando uma fila para novas triagens, um microserviço escuta uma fila e realiza operações através de uma API que se comunicará com um banco de dados. 
 O microserviço permite requisições a respeito das triagens, além de informar a quantidade de pacientes que não foram atendidos.
 
-<br/>
+### Iniciar aplicação
+Dentro da pasta <b>/local</b> executar "docker compose up" para baixar e iniciar os serviços configurados no arquivo <i>docker-compose.yml</i>.
+
+RabbitMQ configurado em <i>localhost:15672</i> com user e password <b>'guest'</b>.
 
 ### Fluxo do sistema
 <img src="https://github.com/user-attachments/assets/1a07ce4a-d853-42fa-be38-4a5d2571fb36" style="width: 540px;"></img>
@@ -19,7 +22,7 @@ O microserviço permite requisições a respeito das triagens, além de informar
 ```
 {
 	"paciente": {
-			"nome": "Luiz Fernando",
+			"nome": "Luiz Fernando Quinholi",
 			"nascimento": "21-12-2004",
 			"cpf": "12345678901",
 			"telefone": "44912345678",
