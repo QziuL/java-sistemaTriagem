@@ -6,7 +6,7 @@
 - RabbitMQ
 
 Utilizando uma fila para novas triagens, um microserviço escuta uma fila e realiza operações através de uma API que se comunicará com um banco de dados. 
-O microserviço permite requisições a respeito das triagens, além de informar a quantidade de pacientes que foram não foram atendidos.
+O microserviço permite requisições a respeito das triagens, além de informar a quantidade de pacientes que não foram atendidos.
 
 <br/>
 
