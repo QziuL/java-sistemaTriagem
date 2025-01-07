@@ -22,13 +22,15 @@ RabbitMQ configurado em <i>localhost:15672</i> com user e password <b>'guest'</b
 ```
 {
 	"paciente": {
-			"nome": "Luiz Fernando Quinholi",
-			"nascimento": "21-12-2004",
-			"cpf": "12345678901",
-			"telefone": "44912345678",
-			"cep": "83838383"
-			},
-	"atendido": false
+		"nome": "Paciente dodoi",
+		"nascimento": "21-12-2004",
+		"cpf": "12345678901",
+		"telefone": "44912345678",
+		"cep": "83838383"
+	},
+	"atendido": false,
+	"sintomas": "Dor de cabeça, febre, cansaço",
+	"urgencia": "BAIXA"
 }
 ```
 
