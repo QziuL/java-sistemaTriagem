@@ -5,12 +5,16 @@ import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 
 public record TriagemEvent(
         PacienteEvent paciente,
-        boolean atendido
+        boolean atendido,
+        String sintomas,
+        String urgencia
 ) {
     public TriagemEntity toEntity() {
         TriagemEntity triagemEntity = new TriagemEntity();
         triagemEntity.setAtendido(this.atendido());
         triagemEntity.setPaciente(setPaciente(this));
+        triagemEntity.setSintomas(sintomas);
+        triagemEntity.setUrgencia(urgencia);
         return triagemEntity;
     }
 

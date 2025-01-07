@@ -13,6 +13,10 @@ public class TriagemEntity {
     @Indexed(name = "atendidos_index")
     private boolean atendido;
 
+    private String sintomas;
+
+    private String urgencia;
+
     private Paciente paciente;
 
     public TriagemEntity() {}
@@ -41,11 +45,26 @@ public class TriagemEntity {
         this.paciente = paciente;
     }
 
+    public String getSintomas() {
+        return sintomas;
+    }
+
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
+    }
+
+    public String getUrgencia() {
+        return urgencia;
+    }
+
+    public void setUrgencia(String urgencia) {
+        this.urgencia = urgencia;
+    }
+
     @Override
     public String toString() {
         return  "triagemId=" + triagemId +
                 ", atendido=" + atendido +
-                //", qtdPacientesEsperando=" + qtdPacientesEsperando +
                 ", paciente=" + paciente;
     }
 }

@@ -1,6 +1,7 @@
 package br.qziul.sistema_saude.listener;
 
 import br.qziul.sistema_saude.events.TriagemEvent;
+import br.qziul.sistema_saude.models.entitys.TriagemEntity;
 import br.qziul.sistema_saude.service.TriagemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class TriagemCreatedListener {
 
     @RabbitListener(queues = TRIAGEM_QUEUE)
     public void listen(Message<TriagemEvent> message) {
-        logger.info("Message consumed: {}", message);
-        triagemService.save(message.getPayload());
+        logger.info("MESSAGE CONSUMED: {}", message);
+        triagemService.save(message.getPayload().toEntity());
     }
 }
