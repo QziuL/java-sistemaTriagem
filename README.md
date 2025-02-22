@@ -9,14 +9,9 @@ Utilizando uma fila para novas triagens, um microserviço escuta uma fila e real
 O microserviço permite requisições a respeito das triagens, além de informar a quantidade de pacientes que não foram atendidos.
 
 ### Iniciar aplicação
-Dentro da pasta <b>/local</b> executar "docker compose up" para baixar e iniciar os serviços configurados no arquivo <i>docker-compose.yml</i>.
+Dentro da pasta <b>/local</b> executar ```docker compose up``` para baixar e iniciar os serviços configurados no arquivo <i>docker-compose.yml</i>.
 
 RabbitMQ configurado em <i>localhost:15672</i> com user e password <b>'guest'</b>.
-
-### Fluxo do sistema
-<img src="https://github.com/user-attachments/assets/1a07ce4a-d853-42fa-be38-4a5d2571fb36" style="width: 540px;"></img>
-
-<br/>
 
 ### JSON a ser recebido pelo RabbitMQ
 ```
